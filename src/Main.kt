@@ -14,9 +14,13 @@ fun main() {
 
     val coche = Coche()
     val bicicleta = Bicicleta()
+    val circulo = Circulo(5.0)
+    val cuadrado = Cuadrado(5.0)
 
     coche.acelerar()
     bicicleta.acelerar()
+    circulo.dibujar()
+    cuadrado.dibujar()
 }
 
 class Persona(val nombre: String, val edad: Int, val ocupacion: String)
@@ -37,3 +41,25 @@ class Bicicleta : Vehiculo {
     }
 }
 
+abstract class Forma {
+    abstract val area: Double
+    abstract fun dibujar()
+}
+
+class Circulo(private val radio: Double) : Forma() {
+    override val area: Double
+        get() = Math.PI * radio * radio
+
+    override fun dibujar() {
+        println("Dibujando un círculo con área $area")
+    }
+}
+
+class Cuadrado(private val lado: Double) : Forma() {
+    override val area: Double
+        get() = lado * lado
+
+    override fun dibujar() {
+        println("Dibujando un cuadrado con área $area")
+    }
+}
